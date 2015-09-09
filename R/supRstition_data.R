@@ -11,6 +11,8 @@
 # Sources:
 #         http://www.chinahighlights.com/travelguide/chinese-zodiac/
 #         http://www.holymtn.com/astrology/year.htm
+#         http://www.hko.gov.hk/gts/time/conversionc.htm
+#         https://github.com/chainsawriot/sinodate
 
 # 12 Zodiac Animals 
 chineseAnimals         <- read.csv("data//chineseAnimals.csv", header = T) 
@@ -49,10 +51,21 @@ rownames(chineseAnimals.hours) <- c("Begin", "End")
 
 saveRDS(chineseAnimals.hours, "data//chineseAnimals_hours.RDS")
 
-# Lunar Zodiac calendar
+# Lunar Chinese Zodiac calendar
 lunarCal <- read.csv("data//lunarCal.csv", header = T, blank.lines.skip = T,
                      stringsAsFactors = F, strip.white = T)
 lunarCal$START_DATE <- strptime(lunarCal$START_DATE, format = "%d-%b-%y", tz = "Asia/Chongqing")
 lunarCal$END_DATE   <- strptime(lunarCal$END_DATE, format = "%d %b %Y", tz = "Asia/Chongqing")
 
+for(i in 1:nrow(lunarCal)){
+  if(lunarCal$ELEMENT[i] == "Metal"){lunarCal$PERSONALITY[i] <- "Fixity, strength of will, fluency of speech"} else if
+    (lunarCal$ELEMENT[i] == "Water"){lunarCal$PERSONALITY[i] <- "Powers of reflection, sensitivity, persuasiveness"} else if
+    (lunarCal$ELEMENT[i] == "Wood"){lunarCal$PERSONALITY[i]  <- "Imagination, creativity, idealism, compassion"} else if
+    (lunarCal$ELEMENT[i] == "Fire"){lunarCal$PERSONALITY[i]  <- "Dynamism, passion, energy, aggression, leadership"} else if
+    (lunarCal$ELEMENT[i] == "Fire"){lunarCal$PERSONALITY[i]  <- "Stability, reliability, practicality, industry, prudence"} 
+}
+
 saveRDS(lunarCal, "data//lunarCal.RDS")
+
+# Solar Chinese Zodiac calendar
+source("https://github.com/chainsawriot/hongkong/blob/master/R/lunarCal.R")
