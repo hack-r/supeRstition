@@ -67,5 +67,3 @@ for(i in 1:nrow(lunarCal)){
 
 saveRDS(lunarCal, "data//lunarCal.RDS")
 
-# Solar Chinese Zodiac calendar
-source("https://github.com/chainsawriot/hongkong/blob/master/R/lunarCal.R")
