@@ -52,3 +52,7 @@ saveRDS(chineseAnimals.hours, "data//chineseAnimals_hours.RDS")
 # Lunar Zodiac calendar
 lunarCal <- read.csv("data//lunarCal.csv", header = T, blank.lines.skip = T,
                      stringsAsFactors = F, strip.white = T)
+lunarCal$START_DATE <- strptime(lunarCal$START_DATE, format = "%d-%b-%y", tz = "Asia/Chongqing")
+lunarCal$END_DATE   <- strptime(lunarCal$END_DATE, format = "%d %b %Y", tz = "Asia/Chongqing")
+
+saveRDS(lunarCal, "data//lunarCal.RDS")
