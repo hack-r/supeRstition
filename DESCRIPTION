@@ -1,0 +1,9 @@
+Package: supeRstition
+Title: Calculate Astrological Symbols in R
+Version: 0.0.0.9000
+Authors@R: person("Jason", "Miller", email = "millerintllc@gmail.com", role = c("aut", "cre"))
+Description: supeRstition allows for the conversion of birth dates to various astrological signs under both Eastern and Western systems. These symbols can
+            then be used as high-quality predictors in scientific forecasts and other analyses.
+Depends: R (>= 3.2.2)
+License: GNU
+LazyData: true

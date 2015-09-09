@@ -1,0 +1,13 @@
+Zodiac_Animal,Toes_Per_Limb,Odd_Even,Yin_Yang,personality_attribute,saying
+Rat,4 front; 5 back,even and odd,yin and yang,Wisdom,Wisdom without industriousness leads to triviality.
+Ox,4,even,yang,Industriousness,Industriousness without wisdom leads to futility.
+Tiger,5,odd,yin,Valor,Valor without caution leads to recklessness.
+Rabbit,4,even,yang,Caution,Caution without valor leads to cowardice.
+Dragon,5,odd,yin,Strength,Strength without flexibility leads to fracture.
+Snake,0,even,yang,Flexibility,Flexibility without strength leads to compromise.
+Horse,1,odd,yin,Forging ahead,Forging ahead without unity leads to abandonment.
+Goat,4,even,yang,Unity,Unity without forging ahead leads to stagnation.
+Monkey,5,odd,yin,Changability,Changability without being constant leads to foolishness.
+Rooster,4,even,yang,Being constant,Being constant without changability leads to woodeness.
+Dog,5,odd,yin,Fidelity,Fidelity without amiability leads to rejection.
+Pig,4,even,yang,Amiability,Amiability
