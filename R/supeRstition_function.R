@@ -13,7 +13,7 @@ if(!require(lubridate)){install.packages("lubridate")}
 chineseAnimals       <- readRDS("data/chineseAnimals.RDS")
 chineseAnimals.hours <- readRDS("data/chineseAnimals_hours.RDS")
 lunarCal             <- readRDS("data/lunarCal.RDS")
-western.data         <- readRDS("western_data.RDS")
+western.data         <- readRDS("data/western_data.RDS")
 
 eastern.profile <- function(birthday){
     good                 <- is.na.POSIXlt(birthday)
