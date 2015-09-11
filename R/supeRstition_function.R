@@ -58,6 +58,7 @@ eastern.element <- function(birthday){
 }
 
 western.sign <- function(birthday){
+  require(lubridate)
   good                 <- is.Date(birthday)
   if(!(good)){birthday <- as.Date(birthday, format = "%Y-%m-%d")}
   year(birthday)       <- 2015
@@ -67,6 +68,7 @@ western.sign <- function(birthday){
 }
 
 western.personality <- function(birthday){
+    require(lubridate)
     good                 <- is.Date(birthday)
     if(!(good)){birthday <- as.Date(birthday, format = "%Y-%m-%d")}
     year(birthday)       <- 2015
@@ -76,6 +78,7 @@ western.personality <- function(birthday){
 }
 
 western.symbol <- function(birthday){
+  require(lubridate)
   good                 <- is.Date(birthday)
   if(!(good)){birthday <- as.Date(birthday, format = "%Y-%m-%d")}
   year(birthday)       <- 2015
