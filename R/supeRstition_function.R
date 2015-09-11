@@ -8,15 +8,14 @@
 cat("Welcome to supeRstition!")
 cat(" ")
 cat("Please make sure that Gregorian birthday inputs are in POSIXlt YYYY-MM-DD format")
-#if (!require("pacman")) install.packages("pacman") 
-#pacman::p_load("Matching")
-#install_github("chainsawriot/sinodate")
-#require(sinodate)
+if(!require(lubridate)){install.packages("lubridate")}
+
 chineseAnimals       <- readRDS("data/chineseAnimals.RDS")
 chineseAnimals.hours <- readRDS("data/chineseAnimals_hours.RDS")
 lunarCal             <- readRDS("data/lunarCal.RDS")
+western.data         <- readRDS("western_data.RDS")
 
-supeRstition_function <- function(birthday){
+eastern.profile <- function(birthday){
     good                 <- is.na.POSIXlt(birthday)
     if(!(good)){birthday <- strptime(birthday, format = "%Y-%m-%d", tz = "Asia/Chongqing")}
     #birthday.lunisolar   <- as.sinodate(birthday, gregorian = TRUE)
@@ -26,7 +25,7 @@ supeRstition_function <- function(birthday){
     return(temp)
 }
 
-supeRstition_personality <- function(birthday){
+eastern.personality <- function(birthday){
   good                 <- is.na.POSIXlt(birthday)
   if(!(good)){birthday <- strptime(birthday, format = "%Y-%m-%d", tz = "Asia/Chongqing")}
   ind  <- (lunarCal$START_DATE <= birthday) & (lunarCal$END_DATE >= birthday)
@@ -34,7 +33,7 @@ supeRstition_personality <- function(birthday){
   return(personality)
 }
 
-supeRstition_aspect <- function(birthday){
+eastern.aspect <- function(birthday){
   good                 <- is.na.POSIXlt(birthday)
   if(!(good)){birthday <- strptime(birthday, format = "%Y-%m-%d", tz = "Asia/Chongqing")}
   ind  <- (lunarCal$START_DATE <= birthday) & (lunarCal$END_DATE >= birthday)
@@ -42,7 +41,7 @@ supeRstition_aspect <- function(birthday){
   return(aspect)
 }
 
-supeRstition_animal <- function(birthday){
+eastern.animal <- function(birthday){
   good                 <- is.na.POSIXlt(birthday)
   if(!(good)){birthday <- strptime(birthday, format = "%Y-%m-%d", tz = "Asia/Chongqing")}
   ind  <- (lunarCal$START_DATE <= birthday) & (lunarCal$END_DATE >= birthday)
@@ -50,10 +49,37 @@ supeRstition_animal <- function(birthday){
   return(animal)
 }
 
-supeRstition_element <- function(birthday){
+eastern.element <- function(birthday){
   good                 <- is.na.POSIXlt(birthday)
   if(!(good)){birthday <- strptime(birthday, format = "%Y-%m-%d", tz = "Asia/Chongqing")}
   ind     <- (lunarCal$START_DATE <= birthday) & (lunarCal$END_DATE >= birthday)
   element <- subset(lunarCal$ELEMENT, ind)
+  return(element)
+}
+
+western.sign <- function(birthday){
+  good                 <- is.na.POSIXlt(birthday)
+  if(!(good)){birthday <- as.Date(birthday, format = "%Y-%m-%d")}
+  year(birthday)       <- 2015
+  ind                  <- (western.data$start_date <= birthday) & (western.data$end_date >= birthday)
+  element              <- subset(western.data$sign, ind)
+  return(element)
+}
+
+western.personality <- function(birthday){
+    good                 <- is.na.POSIXlt(birthday)
+    if(!(good)){birthday <- as.Date(birthday, format = "%Y-%m-%d")}
+    year(birthday)       <- 2015
+    ind                  <- (western.data$start_date <= birthday) & (western.data$end_date >= birthday)
+    element              <- subset(western.data$strength, ind)
+    return(element)
+}
+
+western.symbol <- function(birthday){
+  good                 <- is.Date(birthday)
+  if(!(good)){birthday <- as.Date(birthday, format = "%Y-%m-%d")}
+  year(birthday)       <- 2015
+  ind                  <- (western.data$start_date <= birthday) & (western.data$end_date >= birthday)
+  element              <- subset(western.data$symbol, ind)
   return(element)
 }
