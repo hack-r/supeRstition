@@ -7,8 +7,10 @@
 # ============================================================================
 cat("Welcome to supeRstition!")
 cat(" ")
-cat("Please make sure that Gregorian birthday inputs are in POSIXlt YYYY-MM-DD format")
-if(!require(lubridate)){install.packages("lubridate"); require(lubridate)}
+cat("Please make sure that birthday inputs are in YYYY-MM-DD format")
+cat(" ")
+install.packages("lubridate")
+require(lubridate)
 
 chineseAnimals       <- readRDS("data/chineseAnimals.RDS")
 chineseAnimals.hours <- readRDS("data/chineseAnimals_hours.RDS")
