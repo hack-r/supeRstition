@@ -3,12 +3,8 @@ R package to calculate various Chinese and Western atrological signs for use in 
 
 ## Authors
 Miller, Jason D.   
-Peng, Xuefau Phillip
+Peng, Xuehau Phillip
 
-## Install the current release from CRAN (soon?):
-```r
-install.packages('supeRstition')
-```
 
 ## Install the development version from GitHub:
 ```r
